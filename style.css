@@ -1,0 +1,13 @@
+* {
+    box-sizing: border-box;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+#train-schedule th, td {
+    display: inline-block;
+    width: 20%;
+}
+
+.card-header {
+    font-weight: bold;
+}
