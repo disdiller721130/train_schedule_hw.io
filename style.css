@@ -8,6 +8,10 @@
     width: 20%;
 }
 
+#train-schedule {
+    overflow: scroll;
+}
+
 body {
     background-image: url(amtrak.jpg);
     background-position: center;

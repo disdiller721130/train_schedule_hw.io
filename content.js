@@ -42,7 +42,7 @@ $("#add-train").on("click", function(event) {
     database.ref().push(TrainSummary);
     alert("Train information are successfully added.")
     
-    $("#train-name, #destination, #first-train, #train-freq").empty();
+    $("#train-name, #destination, #first-train, #train-freq").val("");
     
 });
 
