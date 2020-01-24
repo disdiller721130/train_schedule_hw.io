@@ -1,4 +1,4 @@
-var firebaseConfig = {
+var config = {
     apiKey: "AIzaSyCPFz8Jg6R6xgqzELupZG8OXovW9ulRtVI",
     authDomain: "eugene-jan-8.firebaseapp.com",
     databaseURL: "https://eugene-jan-8.firebaseio.com",
@@ -7,10 +7,11 @@ var firebaseConfig = {
     messagingSenderId: "277025804929",
     appId: "1:277025804929:web:29e4f8388e19c6c07c3380",
     measurementId: "G-YXNYJV5B21"
-  };
+};
 
-// Initialize Firebase
-firebase.initializeApp(firebaseConfig);
+firebase.initializeApp(config);
+
+// Create a variable to reference the database.
 var database = firebase.database();
 
 $("#add-train").on("click", function(event) {
@@ -25,7 +26,8 @@ $("#add-train").on("click", function(event) {
     var TimeDiff = moment().diff(moment(FirstTrainConvert), "minutes");
     var tRemainder = TimeDiff % TrainFreq;
     var tMinutesTillTrain = TrainFreq - tRemainder;
-    var NextTrain = moment().add(tMinutesTillTrain, "minutes");
+    var tNext = moment().add(tMinutesTillTrain, "minutes");
+    var NextTrain = moment(tNext).format("hh:mmA");
     
     var TrainSummary = {
         tName: TrainName,
@@ -45,11 +47,12 @@ $("#add-train").on("click", function(event) {
 });
 
 database.ref().on("child_added", function(snapshot) {
-    var TrainName = snapshot.val().nexttrain;
+    var TrainName = snapshot.val().tName;
     var TrainDestination = snapshot.val().destination;
     var tFreq = snapshot.val().tfreq;
     var tNext = snapshot.val().nexttrain;
     var tMinAway = snapshot.val().mintilltrain;
+    console.log(tNext);
     
     var newRow = $("<tr>").append(
         $("<td>").text(TrainName),
