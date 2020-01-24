@@ -8,6 +8,21 @@
     width: 20%;
 }
 
+body {
+    background-image: url(amtrak.jpg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.jumbotron {
+    opacity: 0.8;
+}
+
+.card {
+    opacity: 0.95;
+}
+
 .card-header {
     font-weight: bold;
 }
