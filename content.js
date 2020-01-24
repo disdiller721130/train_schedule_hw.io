@@ -64,3 +64,8 @@ database.ref().on("child_added", function(snapshot) {
     
     $("#train-schedule > tbody").append(newRow);
 });
+
+$("#table_reset").on("click", function() {
+    $("#train-schedule > tbody").html("");
+    database.ref().remove();
+});
